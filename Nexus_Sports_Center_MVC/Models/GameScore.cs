@@ -23,8 +23,8 @@ public class GameScore
     /// <summary>
     /// Gets or sets the game associated with this score.
     /// </summary>
-    [Required]
-    public Game? Game { get; set; }
+    
+    public Game Game { get; set; } = null!;
 
     /// <summary>
     /// Gets or sets the score of the home team in the game.

@@ -71,7 +71,7 @@ public class Game
     /// <summary>
     /// Gets or sets the score of the game.
     /// </summary>
-    [Required]
+    
     public GameScore Score { get; set; } = null!;
 }
 
