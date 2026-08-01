@@ -29,7 +29,7 @@ public class Game
     /// <summary>
     /// Gets or sets the home team for the game.
     /// </summary>
-    public Team? HomeTeam { get; set; }
+    public Team HomeTeam { get; set; } = null!;
 
     /// <summary>
     /// Gets or sets the unique identifier for the away team.
@@ -40,8 +40,8 @@ public class Game
     /// <summary>
     /// Gets or sets the away team for the game.
     /// </summary>
-    
-    public Team? AwayTeam { get; set; }
+
+    public Team AwayTeam { get; set; } = null!;
 
     /// <summary>
     /// Gets or sets the unique identifier for the venue where the game is played.
@@ -52,8 +52,8 @@ public class Game
     /// <summary>
     /// Gets or sets the venue where the game is played.
     /// </summary>
-    
-    public Venue? Venue { get; set; }
+
+    public Venue Venue { get; set; } = null!;
 
     /// <summary>
     /// Gets or sets the unique identifier for the sport associated with the game.
@@ -64,12 +64,12 @@ public class Game
     /// <summary>
     /// Gets or sets the sport associated with the game.
     /// </summary>
-    
-    public Sport? Sport { get; set; }
+
+    public Sport Sport { get; set; } = null!;
 
     /// <summary>
     /// Gets or sets the score of the game.
     /// </summary>
-    public GameScore? Score { get; set; }
+    public GameScore Score { get; set; } = null!;
 }
 
