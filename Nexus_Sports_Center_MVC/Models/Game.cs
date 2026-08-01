@@ -29,7 +29,6 @@ public class Game
     /// <summary>
     /// Gets or sets the home team for the game.
     /// </summary>
-    [Required]
     public Team? HomeTeam { get; set; }
 
     /// <summary>
@@ -41,7 +40,7 @@ public class Game
     /// <summary>
     /// Gets or sets the away team for the game.
     /// </summary>
-    [Required]
+    
     public Team? AwayTeam { get; set; }
 
     /// <summary>
@@ -53,7 +52,7 @@ public class Game
     /// <summary>
     /// Gets or sets the venue where the game is played.
     /// </summary>
-    [Required]
+    
     public Venue? Venue { get; set; }
 
     /// <summary>
@@ -65,7 +64,7 @@ public class Game
     /// <summary>
     /// Gets or sets the sport associated with the game.
     /// </summary>
-    [Required]
+    
     public Sport? Sport { get; set; }
 
     /// <summary>
