@@ -20,19 +20,19 @@ public class Player
     /// </summary>
     [Required]
     [StringLength(100, MinimumLength = 2)]
-    public string FullName { get; set; }
+    public string FullName { get; set; } = null!;
 
     /// <summary>
     /// Gets or sets the jersey number of the player.
     /// Can be null if the player does not have a jersey number assigned.
     /// </summary>
-    public int JerseyNumber { get; set; }
+    public int? JerseyNumber { get; set; }
 
     /// <summary>
     /// Gets or sets the position of the player.
     /// Can be null if the position is not specified.
     /// </summary>
-    public string Position { get; set; }
+    public string? Position { get; set; }
 
     /// <summary>
     /// Gets or sets the unique identifier for the team the player belongs to.

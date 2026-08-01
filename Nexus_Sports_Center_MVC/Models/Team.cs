@@ -31,7 +31,7 @@ public class Team
     /// Gets or sets the sport associated with the team.
     /// </summary>
     [Required]
-    public Sport? Sport { get; set; }
+    public Sport Sport { get; set; } = null!;
 
     /// <summary>
     /// Gets or sets the list of players associated with the team.
