@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Nexus_Sports_Center_MVC.Data;
-
+using Nexus_Sports_Center_MVC;
 
 var builder = WebApplication.CreateBuilder(args);
 
