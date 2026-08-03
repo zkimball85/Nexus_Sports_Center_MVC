@@ -1,0 +1,74 @@
+@model Nexus_Sports_Center_MVC.Models.Game
+
+@{
+    ViewData["Title"] = "Schedule / Log Game";
+}
+
+<h2 class="text-info mb-4">Schedule or Log a Game</h2>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card bg-dark border-secondary shadow-sm">
+            <div class="card-header bg-secondary bg-opacity-25 border-secondary text-light fw-bold">
+                Game Details
+            </div>
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <!-- Date, Sport, and Venue -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <label asp-for="GameDate" class="form-label text-light">Date & Time</label>
+                            <input asp-for="GameDate" class="form-control text-bg-dark border-secondary" type="datetime-local" required />
+                            <span asp-validation-for="GameDate" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="SportId" class="form-label text-light">Sport ID</label>
+                            <input asp-for="SportId" class="form-control text-bg-dark border-secondary" required />
+                            <span asp-validation-for="SportId" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="VenueId" class="form-label text-light">Venue ID</label>
+                            <input asp-for="VenueId" class="form-control text-bg-dark border-secondary" required />
+                            <span asp-validation-for="VenueId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <hr class="border-secondary mb-4" />
+
+                    <!-- Teams and Scores -->
+                    <div class="row g-3 align-items-center mb-4">
+                        <!-- Away Team -->
+                        <div class="col-md-5 text-center">
+                            <label asp-for="AwayTeamId" class="form-label text-muted text-uppercase small">Away Team</label>
+                            <select asp-for="AwayTeamId" class="form-select text-bg-dark border-secondary mb-2" asp-items="ViewBag.AwayTeamId">
+                                <option value="">-- Select Away Team --</option>
+                            </select>
+                            <input asp-for="AwayScore" class="form-control form-control-lg text-bg-dark border-secondary text-center mx-auto" style="max-width: 100px;" placeholder="Score" type="number" />
+                        </div>
+
+                        <!-- VS Divider -->
+                        <div class="col-md-2 text-center">
+                            <span class="badge bg-secondary p-2 mt-3">VS</span>
+                        </div>
+
+                        <!-- Home Team -->
+                        <div class="col-md-5 text-center">
+                            <label asp-for="HomeTeamId" class="form-label text-info text-uppercase small">Home Team</label>
+                            <select asp-for="HomeTeamId" class="form-select text-bg-dark border-secondary mb-2" asp-items="ViewBag.HomeTeamId">
+                                <option value="">-- Select Home Team --</option>
+                            </select>
+                            <input asp-for="HomeScore" class="form-control form-control-lg text-bg-dark border-secondary text-center mx-auto" style="max-width: 100px;" placeholder="Score" type="number" />
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-info px-4">Save Game Data</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
