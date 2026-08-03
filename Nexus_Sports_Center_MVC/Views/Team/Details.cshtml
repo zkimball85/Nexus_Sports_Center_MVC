@@ -1,0 +1,73 @@
+@model Nexus_Sports_Center_MVC.Models.Team
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Team</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2 text-muted">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10 text-light">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+        <dt class = "col-sm-2 text-muted">
+            @Html.DisplayNameFor(model => model.SportId)
+        </dt>
+        <dd class = "col-sm-10 text-light">
+            @Html.DisplayFor(model => model.SportId)
+        </dd>
+    </dl>
+        <dt class = "col-sm-2 text-muted">
+            @Html.DisplayNameFor(model => model.Sport)
+        </dt>
+        <dd class = "col-sm-10 text-light">
+            @Html.DisplayFor(model => model.Sport)
+        </dd>
+    </dl>
+        <dt class = "col-sm-2 text-muted">
+            @Html.DisplayNameFor(model => model.Players)
+        </dt>
+        <dd class = "col-sm-10 text-light">
+            @Html.DisplayFor(model => model.Players)
+        </dd>
+    </dl>
+
+    <hr class="border-secondary mt-5" />
+    <h4 class="text-info mb-3">Active Roster</h4>
+    <div class="card bg-dark border-info shadow-sm mt-4">
+        <div class="card-header bg-info bg-opacity-10 border-info text-info fw-bold">
+            + Add Player to Roster
+        </div>
+        <div class="card-body">
+            <form asp-action="AddPlayer" method="post" class="row g-3 align-items-end">
+                <input type="hidden" name="teamId" value="@Model.Id"? />
+
+                <div class="col-md-5">
+                    <label for="Name" class="form-label text-light small mb-1">Player Name</label>
+                    <input type="text" name="Name" class="form-control form-control-sm text-bg-dark border-secondary" required />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="Position" class="form-label text-light small mb-1">Position</label>
+                    <input type="text" name="Position" class="form-control form-control-sm text-bg-dark border-secondary"? />
+                </div>
+
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-sm btn-info w-100">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

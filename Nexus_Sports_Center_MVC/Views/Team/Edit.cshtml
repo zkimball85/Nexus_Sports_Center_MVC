@@ -1,0 +1,51 @@
+@model Nexus_Sports_Center_MVC.Models.Team
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Team</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <div class="card bg-dark border-secondary shadow-sm"></div>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control text-bg-dark border-secondary" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SportId" class="control-label"></label>
+                    <input asp-for="SportId" class="form-control text-bg-dark border-secondary" />
+                    <span asp-validation-for="SportId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Sport" class="control-label"></label>
+                    <input asp-for="Sport" class="form-control text-bg-dark border-secondary" />
+                    <span asp-validation-for="Sport" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Players" class="control-label"></label>
+                    <input asp-for="Players" class="form-control text-bg-dark border-secondary" />
+                    <span asp-validation-for="Players" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-sm btn-outline-info me-1"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
