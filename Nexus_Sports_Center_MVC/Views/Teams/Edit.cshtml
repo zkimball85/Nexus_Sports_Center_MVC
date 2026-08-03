@@ -10,9 +10,10 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <div class="card bg-dark border-secondary shadow-sm"></div>
-            <form asp-action="Edit">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="card bg-dark border-secondary shadow-sm">
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Id" />
                 <div class="form-group">
                     <label asp-for="Name" class="control-label"></label>
@@ -40,6 +41,7 @@
             </form>
         </div>
     </div>
+</div>
 </div>
 
 <div>
