@@ -29,7 +29,7 @@ public class GamesController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
 
-    public async Task<IActionResult> Create([Bind("Id,HomeTeamId,AwayTeamId,GameDate,Sport,Venue,HomeScore,AwayScore,IsCompleted")] Game game)
+    public async Task<IActionResult> Create([Bind("Id,HomeTeamId,AwayTeamId,GameDate,SportId,VenueId,HomeScore,AwayScore,IsCompleted")] Game game)
     {
         if (ModelState.IsValid)
         {
