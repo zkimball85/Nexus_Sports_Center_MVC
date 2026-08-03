@@ -1,8 +1,59 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    /* Quick Action Card Animations */
+    .action-card{
+        background-color: #1e1e1e;
+        border: 1px solid #333;
+        border-radius: 8px;
+        transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    }
+    .action-card:hover{
+        transform: translateY(-5px);
+        border-color: #0dcaf0;
+        box-shadow:0 10px 20px rgba(0, 0, 0, 0.4);
+    }
+</style>
+
+<div class="text-center mb-5 mt-4">
+    <h1 class="display-4 fw-bold">Nexus Sports Center</h1>
+    <p class="lead text-muted">Manage your leagues, teams, and game data from your central dashboard.</p>
+</div>
+
+<div class="row g-4 justify-content-center">
+
+    <!-- Teams and Rosters Card -->
+    <div class="col-md-4">
+        <div class="card action-card h-100 p-3 shadow-sm text-center">
+            <div class="card-body">
+                <h4 class="card-title text-info mb-3">Teams & Rosters</h4>
+                <p class="card-text text-secondary mb-4">Draft new players, manage existing team rosters, and review team statistics.</p>
+                <a asp-controller="Teams" asp-action="Index" class="btn btn-outline-info w-100">Manage Teams</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Game Card -->
+    <div class="col-md-4">
+        <div class="card action-card h-100 p-3 shadow-sm text-center">
+            <div class="card-body">
+                <h4 class="card-title text-info mb-3">Schedule and Log Game</h4>
+                <p class="card-text text-secondary mb-4">Set up upcoming games, assign referees, and log active game details.</p>
+                <a asp-controller="Games" asp-action="Index" class="btn btn-outline-info w-100">View Schedule</a>
+            </div>
+        </div>"
+    </div>
+    
+    <!-- Score History Card -->
+    <div class="col-md-4">
+        <div class="card action-card h-100 p-3 shadow-sm text-center">
+            <div class="card-body">
+                <h4 class="card-title text-info mb-3">Score History</h4>
+                <p class="card-text text-secondary mb-4">Review historical box scores, game outcomes, and seasonal data logs.</p>
+                <a asp-controller="Scores" asp-action="Index" class="btn btn-outline-info w-100">View Scores</a>
+            </div>
+        </div>
+    </div>
 </div>
