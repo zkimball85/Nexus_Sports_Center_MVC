@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Nexus_Sports_Center_MVC.Models;
 using Nexus_Sports_Center_MVC.Data;
 
+namespace Nexus_Sports_Center_MVC.Controllers;
+
 public class TeamsController : Controller
 {
     private readonly NexusDbContext _context;
