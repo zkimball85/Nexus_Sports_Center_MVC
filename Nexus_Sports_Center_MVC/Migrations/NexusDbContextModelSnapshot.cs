@@ -259,8 +259,7 @@ namespace Nexus_Sports_Center_MVC.Migrations
 
             modelBuilder.Entity("Nexus_Sports_Center_MVC.Models.Game", b =>
                 {
-                    b.Navigation("Score")
-                        .IsRequired();
+                    b.Navigation("Score");
                 });
 
             modelBuilder.Entity("Nexus_Sports_Center_MVC.Models.Sport", b =>
