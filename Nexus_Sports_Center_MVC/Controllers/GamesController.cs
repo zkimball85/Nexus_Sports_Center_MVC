@@ -17,12 +17,12 @@ public class GamesController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var NexusDbContext = _context.Games
+        var gamesQuery = _context.Games
             .Include(g => g.HomeTeam)
             .Include(g => g.AwayTeam)
             .Include(g => g.Sport)
             .Include(g => g.Venue);
-        return View(await NexusDbContext.ToListAsync());
+        return View(await gamesQuery.ToListAsync());
     }
 
     // GET: Games/Create

@@ -49,7 +49,7 @@ public class TeamsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,GameDate,HomeTeamId,AwayTeamId,SportId,VenueId,IsCompleted")] Team team)
+    public async Task<IActionResult> Create([Bind("Id,Name")] Team team)
     {
         if (ModelState.IsValid)
         {
@@ -81,7 +81,7 @@ public class TeamsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int? id, [Bind("Id,GameDate,HomeTeamId,AwayTeamId,SportId,VenueId,IsCompleted")] Team team)
+    public async Task<IActionResult> Edit(int? id, [Bind("Id,Name")] Team team)
     {
         if (id != team.Id)
         {
