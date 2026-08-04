@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Nexus_Sports_Center_MVC.Models;
 using Nexus_Sports_Center_MVC.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Nexus_Sports_Center_MVC.Controllers;
 
@@ -12,6 +13,16 @@ public class GamesController : Controller
     public GamesController(NexusDbContext context)
     {
         _context = context;
+    }
+
+    public async Task<IActionResult> Index()
+    {
+        var gamesQuery = _context.Games
+            .Include(g => g.HomeTeam)
+            .Include(g => g.AwayTeam)
+            .Include(g => g.Sport)
+            .Include(g => g.Venue);
+        return View(await gamesQuery.ToListAsync());
     }
 
     // GET: Games/Create
@@ -28,7 +39,7 @@ public class GamesController : Controller
     // POST: Games/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,GameDate,HomeTeamId,AwayTeamId,SportId,VenueId,HomeScore,AwayScore,IsCompleted")] Game game)
+    public async Task<IActionResult> Create([Bind("Id,GameDate,HomeTeamId,AwayTeamId,SportId,VenueId,IsCompleted")] Game game)
     {
         if (ModelState.IsValid)
         {
@@ -59,7 +70,7 @@ public class GamesController : Controller
     // POST: Games/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,GameDate,HomeTeamId,AwayTeamId,SportId,VenueId,HomeScore,AwayScore,IsCompleted")] Game game)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,GameDate,HomeTeamId,AwayTeamId,SportId,VenueId,IsCompleted")] Game game)
     {
         // Security check to ensure the URL ID matches the model ID
         if (id != game.Id)
