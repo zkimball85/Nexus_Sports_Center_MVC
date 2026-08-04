@@ -20,14 +20,14 @@ public class Player
     /// </summary>
     [Required]
     [StringLength(100, MinimumLength = 2)]
-    public string? FirstName { get; set; }
+    public string FirstName { get; set; }
 
     /// <summary>
     /// Gets or sets the last name of the player.
     /// </summary>
     [Required]
     [StringLength(100, MinimumLength = 2)]
-    public string? LastName { get; set; }
+    public string LastName { get; set; }
 
     /// <summary>
     /// Gets or sets the jersey number of the player.
