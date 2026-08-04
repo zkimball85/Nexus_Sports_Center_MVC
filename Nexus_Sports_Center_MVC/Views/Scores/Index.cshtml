@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Nexus_Sports_Center_MVC.Models.Game>
+
+@{
+    ViewData["Title"] = "Score History";
+}
+
+<h2 class="mb-4">Score History</h2>
+
+<!-- Filter Form -->
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <form asp-controller="Scores" asp-action="Index" method="get">
+            <div class="row g-3 align-items-end">
+                <div class="col-md-2">
+                    <label class="form-label text-muted small">Sport</label>
+                    <select name="sportId" class="form-select" asp-items="@(ViewData["Sports"] as SelectList)">
+                        <option value="">All Sports</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label text-muted small">Team</label>
+                    <select name="teamId" class="form-select" asp-items="@(ViewData["Teams"] as SelectList)">
+                        <option value="">All Teams</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label text-muted small">Venue</label>
+                    <select name="venueId" class="form-select" asp-items="@(ViewData["Venues"] as SelectList)">
+                        <option value="">All Venues</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label text-muted small">Start Date</label>
+                    <!-- Dates don't need casting since they render as plain strings -->
+                    <input type="date" name="startDate" class="form-control" value="@ViewData["StartDate"]" />
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label text-muted small">End Date</label>
+                    <input type="date" name="endDate" class="form-control" value="@ViewData["EndDate"]" />
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Results Table -->
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Date</th>
+                <th>Sport</th>
+                <th class="text-end">Home Team</th>
+                <th class="text-center">Score</th>
+                <th>Away Team</th>
+                <th>Venue</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var game in Model)
+                {
+                    <tr>
+                        <td>@game.GameDate.ToString("MMM dd, yyyy")</td>
+                        <td>@game.Sport?.Name</td>
+                        <td class="text-end fw-bold">@game.HomeTeam?.Name</td>
+                        <td class="text-center">
+                            <span class="badge bg-secondary fs-6">
+                                @game.HomeScore - @game.AwayScore
+                            </span>
+                        </td>
+                        <td class="fw-bold">@game.AwayTeam?.Name</td>
+                        <td>@game.Venue?.Name</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="text-center py-4 text-muted">
+                        No historical scores found matching your filters.
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
