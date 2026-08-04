@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Nexus_Sports_Center_MVC.Models.Game>
+﻿@model Nexus_Sports_Center_MVC.ViewModels.ScoresIndexViewModel
 
 @{
-    ViewData["Title"] = "Score History";
+    ViewData["Title"] = "Historical Scores";
 }
 
 <h2 class="mb-4">Score History</h2>
@@ -13,30 +13,29 @@
             <div class="row g-3 align-items-end">
                 <div class="col-md-2">
                     <label class="form-label text-muted small">Sport</label>
-                    <select name="sportId" class="form-select" asp-items="@(ViewData["Sports"] as SelectList)">
+                    <select asp-for="SportId" class="form-select" asp-items="Model.Sports">
                         <option value="">All Sports</option>
                     </select>
                 </div>
                 <div class="col-md-2">
                     <label class="form-label text-muted small">Team</label>
-                    <select name="teamId" class="form-select" asp-items="@(ViewData["Teams"] as SelectList)">
+                    <select asp-for="TeamId" class="form-select" asp-items="Model.Teams">
                         <option value="">All Teams</option>
                     </select>
                 </div>
                 <div class="col-md-2">
                     <label class="form-label text-muted small">Venue</label>
-                    <select name="venueId" class="form-select" asp-items="@(ViewData["Venues"] as SelectList)">
+                    <select asp-for="VenueId" class="form-select" asp-items="Model.Venues">
                         <option value="">All Venues</option>
                     </select>
                 </div>
                 <div class="col-md-2">
                     <label class="form-label text-muted small">Start Date</label>
-                    <!-- Dates don't need casting since they render as plain strings -->
-                    <input type="date" name="startDate" class="form-control" value="@ViewData["StartDate"]" />
+                    <input asp-for="StartDate" type="date" class="form-control" />
                 </div>
                 <div class="col-md-2">
                     <label class="form-label text-muted small">End Date</label>
-                    <input type="date" name="endDate" class="form-control" value="@ViewData["EndDate"]" />
+                    <input asp-for="EndDate" type="date" class="form-control" />
                 </div>
                 <div class="col-md-2">
                     <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
@@ -60,9 +59,9 @@
             </tr>
         </thead>
         <tbody>
-            @if (Model != null && Model.Any())
+            @if (Model.Games != null && Model.Games.Any())
             {
-                foreach (var game in Model)
+                foreach (var game in Model.Games)
                 {
                     <tr>
                         <td>@game.GameDate.ToString("MMM dd, yyyy")</td>

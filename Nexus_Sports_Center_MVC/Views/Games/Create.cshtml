@@ -25,12 +25,16 @@
                         </div>
                         <div class="col-md-4">
                             <label asp-for="SportId" class="form-label text-light">Sport</label>
-                            <input asp-for="SportId" class="form-control text-bg-dark border-secondary" required />
+                            <select asp-for="SportId" class="form-select text-bg-dark border-secondary" asp-items="ViewBag.SportId" required>
+                            <option value="">Select a sport</option>
+                            </select>
                             <span asp-validation-for="SportId" class="text-danger"></span>
                         </div>
                         <div class="col-md-4">
                             <label asp-for="VenueId" class="form-label text-light">Venue</label>
-                            <input asp-for="VenueId" class="form-control text-bg-dark border-secondary" required />
+                            <select asp-for="VenueId" class="form-select text-bg-dark border-secondary" asp-items="ViewBag.VenueId" required>
+                                <option value="">Select a venue</option>
+                            </select>
                             <span asp-validation-for="VenueId" class="text-danger"></span>
                         </div>
                     </div>
