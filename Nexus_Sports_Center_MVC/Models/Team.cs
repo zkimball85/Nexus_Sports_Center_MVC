@@ -34,6 +34,16 @@ public class Team
     public Sport Sport { get; set; } = null!;
 
     /// <summary>
+    /// Gets or sets the unique identifier for the venue associated with the team.
+    /// </summary>
+    public int? VenueId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the venue associated with the team.
+    /// </summary>
+    public Venue? HomeVenue { get; set; }
+
+    /// <summary>
     /// Gets or sets the list of players associated with the team.
     /// </summary>
     public List<Player> Players { get; set; } = new();

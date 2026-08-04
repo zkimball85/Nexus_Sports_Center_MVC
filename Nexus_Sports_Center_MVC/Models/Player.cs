@@ -16,11 +16,18 @@ public class Player
     public int Id { get; set; }
 
     /// <summary>
-    /// Gets or sets the full name of the player.
+    /// Gets or sets the first name of the player.
     /// </summary>
     [Required]
     [StringLength(100, MinimumLength = 2)]
-    public string FullName { get; set; } = null!;
+    public string? FirstName { get; set; }
+
+    /// <summary>
+    /// Gets or sets the last name of the player.
+    /// </summary>
+    [Required]
+    [StringLength(100, MinimumLength = 2)]
+    public string? LastName { get; set; }
 
     /// <summary>
     /// Gets or sets the jersey number of the player.
