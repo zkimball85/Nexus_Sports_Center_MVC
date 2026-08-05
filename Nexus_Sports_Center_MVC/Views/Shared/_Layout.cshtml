@@ -32,7 +32,7 @@
         }
     </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
             <div class="container-fluid">
@@ -63,13 +63,13 @@
             </div>
         </nav>
     </header>
-    <div class="container mt-4">
+    <div class="container mt-4 flex-grow-1">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted text-center mt-auto py-3" style="border-color: #333 !important;">
+    <footer class="footer text-muted text-center mt-auto py-2">
         <div class="container">
             &copy; @DateTime.Now.Year - Nexus Sports Center - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
