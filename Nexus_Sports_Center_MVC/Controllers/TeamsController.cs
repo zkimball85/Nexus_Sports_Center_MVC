@@ -115,6 +115,7 @@ public class TeamsController : Controller
     }
 
     // GET: TEAMS/Roster/5
+    [HttpGet]
     public async Task<IActionResult> Roster(int? id)
     {
         if(id == null) return NotFound();
@@ -135,6 +136,8 @@ public class TeamsController : Controller
         return View(viewModel);
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddPlayerToRoster(TeamRosterViewModel viewModel)
     {
         if (ModelState.IsValid)

@@ -10,17 +10,14 @@ namespace Nexus_Sports_Center_MVC.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "FullName",
-                table: "Players",
-                newName: "LastName");
-
+            // Add VenueId to Teams (keep existing logic)
             migrationBuilder.AddColumn<int>(
                 name: "VenueId",
                 table: "Teams",
                 type: "int",
                 nullable: true);
 
+            // Add new FirstName and LastName columns
             migrationBuilder.AddColumn<string>(
                 name: "FirstName",
                 table: "Players",
@@ -29,17 +26,32 @@ namespace Nexus_Sports_Center_MVC.Migrations
                 nullable: false,
                 defaultValue: "");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Teams_VenueId",
-                table: "Teams",
-                column: "VenueId");
+            migrationBuilder.AddColumn<string>(
+                name: "LastName",
+                table: "Players",
+                type: "nvarchar(100)",
+                maxLength: 100,
+                nullable: false,
+                defaultValue: "");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Teams_Venues_VenueId",
-                table: "Teams",
-                column: "VenueId",
-                principalTable: "Venues",
-                principalColumn: "Id");
+            // Migrate existing data by splitting FullName at the first space
+            migrationBuilder.Sql(@"
+                UPDATE Players
+                SET 
+                    FirstName = CASE 
+                        WHEN CHARINDEX(' ', FullName) > 0 THEN SUBSTRING(FullName, 1, CHARINDEX(' ', FullName) - 1)
+                        ELSE FullName 
+                    END,
+                    LastName = CASE 
+                        WHEN CHARINDEX(' ', FullName) > 0 THEN SUBSTRING(FullName, CHARINDEX(' ', FullName) + 1, LEN(FullName))
+                        ELSE '' 
+                    END
+            ");
+
+            // 4. Drop the legacy FullName column
+            migrationBuilder.DropColumn(
+                name: "FullName",
+                table: "Players");
         }
 
         /// <inheritdoc />
